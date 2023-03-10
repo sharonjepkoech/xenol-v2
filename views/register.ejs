@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register</title>
+
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <%-include('partials/header') %>
+    <main class="register-main">
+      <h1>Welcome to Xenol Digital Security</h1>
+      <% if(locals.error){%>
+
+      <form action="/register" method="post">
+        <label for="company">company Name</label>
+        <input
+          type="text"
+          name="COmpany"
+          id="company"
+          value="<%= data.company %>"
+        /><br />
+        <br />
+        <% if(locals.emailError){%>
+        <p style="color: red"><%= emailError %></p>
+        <%}%>
+
+        <label for="email">email</label>
+        <input
+          type="email"
+          value="<%=data.email %>"
+          name="email"
+          id="email"
+        /><br />
+        <br />
+
+        <% if(locals.emailError){ %>
+        <p style="color: red"><%= emailError %></p>
+        <%}%> <% if(locals.passwordError){ %>
+        <p><%=passwordError %></p>
+        <%}%>
+        <label for="password">password</label>
+        <input
+          type="password"
+          value="<% data.password %>"
+          name="password"
+          id="password"
+        /><br />
+        <br />
+
+        <label for="confirm_password">confirm_password</label>
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          value="<%=data.confirm_password %>"
+        /><br />
+        <br />
+
+        <label for="Domain">domain Name</label>
+        <input
+          type="text"
+          name="domain"
+          value="<%=data.domain %>"
+          id="domain"
+        /><br />
+        <br />
+
+        <label for="num_of_employees">Number of Employess</label>
+        <input type="radio" name="num_of_employees" id="below-5" value="1-4" />
+        <label for="below-5">below 5</label>
+
+        <input type="radio" name="num_of_employees" id="5-20" value="5-19" />
+        <label for="5-20">between 5 and 20</label>
+
+        <input type="radio" name="num_of_employees" id="above-20" />
+        <label for="above-20" value="20-100">above-20 </label> <br />
+        <br />
+
+        <label for="description">description</label>
+        <textarea
+          value="<%=data.description %>"
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+        ></textarea
+        ><br />
+        <br />
+
+        <input type="submit" value="register" />
+      </form>
+      <%}else{%>
+      <form action="/register" method="post">
+        <label for="company">company Name</label>
+        <input type="text" name="COmpany" id="company" /><br />
+        <br />
+
+        <label for="email">email</label>
+        <input type="email" name="email" id="email" /><br />
+        <br />
+
+        <label for="password">password</label>
+        <input type="password" name="password" id="password" /><br />
+        <br />
+
+        <label for="confirm_password">confirm_password</label>
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+        /><br />
+        <br />
+
+        <label for="Domain">domain Name</label>
+        <input type="text" name="domain" id="domain" /><br />
+        <br />
+
+        <label for="num_of_employees">Number of Employess</label>
+        <input type="radio" name="num_of_employees" id="below-5" value="1-4" />
+        <label for="below-5">below 5</label>
+
+        <input type="radio" name="num_of_employees" id="5-20" value="5-19" />
+        <label for="5-20">between 5 and 20</label>
+
+        <input type="radio" name="num_of_employees" id="above-20" />
+        <label for="above-20" value="20-100">above-20 </label> <br />
+        <br />
+
+        <label for="description">description</label>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+        ></textarea
+        ><br />
+        <br />
+
+        <input type="submit" value="register" />
+      </form>
+      <%}%> <%- include('partials/footer') %>
+    </main>
+  </body>
+</html>
